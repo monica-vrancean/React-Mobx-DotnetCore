@@ -1,0 +1,27 @@
+
+form{
+    margin-left: 200px;
+    width:500px;
+}
+
+.form-group{
+    display:flex;
+    justify-content: space-between;
+
+}
+
+.form-control{
+    width:400px;
+}
+input.difficulty{
+    width: 400px;
+}
+
+.difficulty-level{
+    display: flex;
+    justify-content: space-between;
+    width:400px;
+}
+.difficulty-controls{
+    flex-direction: column;
+}
