@@ -1,7 +1,6 @@
 
-import { TodoItemStatus } from '../models/todo-model';
 import { observable, computed, action } from 'mobx';
-import { FilterTypes } from '../models/Filter-types';
+import { TodoItemStatus } from '../models/todo-item-status';
 
 export class TodoItem{
     @observable public title: string;
