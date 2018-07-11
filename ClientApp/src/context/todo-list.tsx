@@ -1,11 +1,11 @@
 
-import { TodoModel, TodoItemStatus } from '../models/todo-model';
+import { TodoItemStatus } from '../models/todo-model';
 import { observable, computed, action } from 'mobx';
 import { FilterTypes } from '../models/Filter-types';
-import { RecipeItemViewModel } from './todo-item-view-model';
+import { TodoItem } from './todo-item';
 
-export class TodoListViewModel{
-    @observable todos:RecipeItemViewModel[] = [];
+export class TodoList{
+    @observable todos:TodoItem[] = [];
     @observable filter: FilterTypes = FilterTypes.All;
     @computed get getTodos(){
         switch(this.filter){
@@ -20,7 +20,7 @@ export class TodoListViewModel{
     }
 
     public addTodo(todo: string){
-      this.todos.push(new RecipeItemViewModel(todo));
+      this.todos.push(new TodoItem(todo));
     }
 
     public deleteTodo(todoTitle: string){
@@ -59,4 +59,4 @@ export class TodoListViewModel{
     }
 }
 
-export default new TodoListViewModel();
+export default new TodoList();

@@ -1,10 +1,10 @@
 
 import { observable, computed, action } from 'mobx';
-import { RecipeItemViewModel } from 'src/view-models/recipe-view-model';
+import { RecipeItem } from './recipe';
 import { Recipe } from '../recipes/recipe-item/recipe.component';
 
-export class RecipeListViewModel{
-    @observable recipes:RecipeItemViewModel[] = [];
+export class RecipeList{
+    @observable recipes:RecipeItem[] = [];
     @computed get getRecipe(){
         fetch('api/SampleData/WeatherForecasts')
         .then(response => response.json())
@@ -16,7 +16,7 @@ export class RecipeListViewModel{
 
     @action.bound
     public addRecipe(recipe: Recipe){
-      this.recipes.push(new RecipeItemViewModel(recipe));
+      this.recipes.push(new RecipeItem(recipe));
       console.log('recipe added', this.recipes)
 
     }
@@ -27,4 +27,4 @@ export class RecipeListViewModel{
     }
 }
 
-export default new RecipeListViewModel();
+export default new RecipeList();

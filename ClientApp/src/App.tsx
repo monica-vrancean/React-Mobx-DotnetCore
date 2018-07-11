@@ -2,15 +2,14 @@ import * as React from 'react';
 import './App.css';
 
 import logo from './logo.svg';
-import TodoList from './todo-list/todo-list';
+import TodoList from './todo-list/todo-list.component';
 import { Provider } from 'mobx-react';
-import todoListViewModel from './view-models/todo-list-view-model';
+import todoList from './context/todo-list';
 import { Route } from 'react-router';
 import { HashRouter as Router, Switch } from 'react-router-dom';
-import RecipeItemComponent from './recipes/recipe-item/recipe.component';
-import recipeListViewModel from './view-models/recipe-list-view-mdel';
+import recipeListViewModel from './context/recipe-list';
 import TabMenuComponent from './tab-menu/tab-menu.component';
-import viewState  from './store/view-state';
+import viewState  from './context/view-state';
 
 class App extends React.Component {
   public render() {
@@ -20,7 +19,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Todo List</h1>
         </header>
-        <Provider todoListViewModel={todoListViewModel} recipeListViewModel={recipeListViewModel} viewState={viewState}>
+        <Provider todoListViewModel={todoList} recipeListViewModel={recipeListViewModel} viewState={viewState}>
           <Router>
             <Switch>
               <Route path='/todolist' component={TodoList} />

@@ -2,13 +2,11 @@ import {observer, inject} from "mobx-react";
 import * as React from "react";
 import {action} from "mobx";
 import * as classNames from "classnames";
-import {TodoItemStatus} from "../../models/todo-model";
-import { RecipeItemViewModel } from "../../view-models/recipe-view-model";
-import { RecipeListViewModel } from "../../view-models/recipe-list-view-mdel";
 import './recipe.component.css';
+import { RecipeList } from "../../context/recipe-list";
 
 interface Props {
-    recipeListViewModel : RecipeListViewModel
+    recipeListViewModel : RecipeList
 }
 export interface Recipe{
     title:string;

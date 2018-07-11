@@ -1,4 +1,4 @@
-import { RecipeItemViewModel } from "../../view-models/todo-item-view-model";
+import { TodoItem } from "../../context/todo-item";
 import { observer } from "mobx-react";
 import * as React from "react";
 import { action } from "mobx";
@@ -6,13 +6,13 @@ import * as classNames from "classnames";
 import { TodoItemStatus } from "../../models/todo-model";
 
 interface Props{
-  todoItem:RecipeItemViewModel;
+  todoItem:TodoItem;
   deleteTodo:Function;
 }
 
 @observer
 class TodoItemComponent extends React.Component<Props> {
-   store: RecipeItemViewModel;
+   store: TodoItem;
 
    constructor(props:Props){
       super(props);

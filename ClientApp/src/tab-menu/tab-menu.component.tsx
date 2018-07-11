@@ -1,11 +1,11 @@
 import * as React from "react";
 import './tab-menu.component.css';
 import {Tab, Tabs} from 'react-bootstrap'
-import TodoList from "../todo-list/todo-list";
+import TodoList from "../todo-list/todo-list.component";
 import RecipeItemComponent from "../recipes/recipe-item/recipe.component";
 import RecipeListComponent from "../recipes/recipe-list/recipe-list.component";
 import { observer, inject } from "mobx-react";
-import { ViewState } from "../store/view-state";
+import { ViewState } from "../context/view-state";
 import * as classNames from "classnames";
 
 export enum HeaderTabs{

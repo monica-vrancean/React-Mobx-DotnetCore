@@ -1,27 +1,27 @@
 import { observer, inject } from 'mobx-react';
 
-import './todo-list.css';
+import './todo-list.component.css';
 
 
 import * as React from 'react';
 
 import Button from '../shared/button/button';
-import { TodoListViewModel } from '../view-models/todo-list-view-model';
 import * as classNames from 'classnames';
-import { TodoItemStatus, TodoModel } from '../models/todo-model';
 import { FilterTypes } from '../models/Filter-types';
 import { action } from 'mobx';
-import TodoItemComponent from './todo-item/todo-item';
+import TodoItemComponent from './todo-item/todo-item.component';
+import { TodoItem } from '../context/todo-item';
+import { TodoList } from '../context/todo-list';
 
 interface Props{
-  todoListViewModel:TodoListViewModel;
+  todoListViewModel:TodoList;
 }
 
 @inject('todoListViewModel')
 @observer
-class TodoList extends React.Component {
+class TodoListComponent extends React.Component {
   private inputRef: React.RefObject<HTMLInputElement>
-   store: TodoListViewModel;
+   store: TodoList;
 
    constructor(props:Props){
       super(props);
@@ -48,7 +48,7 @@ class TodoList extends React.Component {
     this.store.editTodo(todoTitle);
   }
 
-  isEditable(todo:TodoModel):boolean{
+  isEditable(todo:TodoItem):boolean{
     return todo.isEditable;
   }
 
@@ -100,4 +100,4 @@ class TodoList extends React.Component {
   
 }
 
-export default TodoList;
+export default TodoListComponent;

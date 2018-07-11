@@ -1,7 +1,7 @@
 import { observable, action } from "mobx";
 import { Recipe } from "../recipes/recipe-item/recipe.component";
 
-export class RecipeItemViewModel{
+export class RecipeItem{
     @observable public title: string;
     @observable public isEditable:boolean;
     @observable public description: string;

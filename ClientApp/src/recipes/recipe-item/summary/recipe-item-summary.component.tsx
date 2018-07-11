@@ -1,9 +1,9 @@
 import * as React from "react";
 import './recipe-item-summary.component.css';
-import { RecipeItemViewModel } from "../../../view-models/recipe-view-model";
+import { RecipeItem } from "../../../context/recipe";
 
 interface Props{
-    recipeItemViewModel: RecipeItemViewModel;
+    recipeItemViewModel: RecipeItem;
 }
 
 class RecipeItemSummaryComponent extends React.Component<Props>{
