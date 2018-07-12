@@ -7,10 +7,22 @@
     border: 1px solid grey;
     box-shadow: 2px 2px 2px grey;
     height: 40px;
+    position: relative;
 }
 
 .recipe-summary{
     padding: 15px;
     flex-direction: column;
     display: flex;
+}
+
+.edit{
+    font-size: 20px;
+    color: red;
+}
+
+.button5 {
+    position: absolute;
+    right: 0px;
+    bottom: 5px;
 }

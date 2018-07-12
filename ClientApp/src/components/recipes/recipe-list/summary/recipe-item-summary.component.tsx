@@ -1,9 +1,9 @@
 import * as React from "react";
 import './recipe-item-summary.component.css';
-import { RecipeItem } from "../../../context/recipe";
+import { RecipeItem } from "../../../../view-models/recipe";
 
 interface Props{
-    recipeItemViewModel: RecipeItem;
+    recipeItem: RecipeItem;
 }
 
 class RecipeItemSummaryComponent extends React.Component<Props>{
@@ -11,10 +11,13 @@ class RecipeItemSummaryComponent extends React.Component<Props>{
         return(
             <div className="recipe-summary"> 
                 <div>
-                    <img className="recipeImage" src={URL.createObjectURL(this.props.recipeItemViewModel.images[0])}/>
+                    <img className="recipeImage" src={URL.createObjectURL(this.props.recipeItem.images[0])}/>
                 </div>
                 <div className="recipe-detail">
-                    <span>{this.props.recipeItemViewModel.title}</span>
+                    <span>{this.props.recipeItem.title}</span>
+                    <button className="button button5">
+                        <span className="glyphicon glyphicon-pencil edit"></span>
+                    </button>
                 </div>
             </div>
         );

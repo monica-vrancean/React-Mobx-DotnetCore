@@ -3,10 +3,10 @@ import * as React from "react";
 import {action} from "mobx";
 import * as classNames from "classnames";
 import './recipe.component.css';
-import { RecipeList } from "../../context/recipe-list";
+import { RecipeListStore } from "../../../store/recipe-list-store";
 
 interface Props {
-    recipeListViewModel : RecipeList
+    recipeList : RecipeListStore
 }
 export interface Recipe{
     title:string;
@@ -32,9 +32,8 @@ const initialState ={
 
 };
 
-@inject('recipeListViewModel')
 @observer
-class RecipeItemComponent extends React.Component <any, State > {
+class RecipeItemComponent extends React.Component <Props, State > {
     servingsRange:number[];
   private fileInputRef: React.RefObject<HTMLInputElement>
 
@@ -60,7 +59,7 @@ class RecipeItemComponent extends React.Component <any, State > {
         event.preventDefault();
         const data = new FormData(event.target);
        // console.log(event.target, 'data', data.)
-        this.props.recipeListViewModel.addRecipe(this.state);
+        this.props.recipeList.addRecipe(this.state);
         this.resetRecipe();
 
     }

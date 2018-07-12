@@ -5,34 +5,32 @@ import './todo-list.component.css';
 
 import * as React from 'react';
 
-import Button from '../shared/button/button';
-import * as classNames from 'classnames';
-import { FilterTypes } from '../models/Filter-types';
 import { action } from 'mobx';
 import TodoItemComponent from './todo-item/todo-item.component';
-import { TodoItem } from '../context/todo-item';
-import { TodoList } from '../context/todo-list';
+import { TodoListStore } from '../../store/todo-list-store';
+import { FilterTypes } from '../../models/Filter-types';
+import Button from '../../shared/button/button';
+import { TodoItem } from '../../view-models/todo-item';
 
 interface Props{
-  todoListViewModel:TodoList;
+  todoList:TodoListStore;
 }
 
-@inject('todoListViewModel')
 @observer
-class TodoListComponent extends React.Component {
+class TodoListComponent extends React.Component<Props> {
   private inputRef: React.RefObject<HTMLInputElement>
-   store: TodoList;
+   store: TodoListStore;
 
    constructor(props:Props){
       super(props);
-      this.store = props.todoListViewModel;
+      this.store = props.todoList;
       this.inputRef = React.createRef();
   }
 
   addTodo(){
     if(this.inputRef.current){
      this.store.addTodo( this.inputRef.current.value );
-     this.inputRef.current.value="";
+     this.inputRef.current.value = "";
     }
   }
 
@@ -96,7 +94,7 @@ class TodoListComponent extends React.Component {
         </ul>
       </div>
     );
-}
+  }
   
 }
 

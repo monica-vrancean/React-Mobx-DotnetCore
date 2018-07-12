@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { Recipe } from "../recipes/recipe-item/recipe.component";
+import { Recipe } from "../components/recipes/recipe-item/recipe.component";
 
 export class RecipeItem{
     @observable public title: string;

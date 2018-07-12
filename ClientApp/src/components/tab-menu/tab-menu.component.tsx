@@ -1,12 +1,12 @@
 import * as React from "react";
 import './tab-menu.component.css';
 import {Tab, Tabs} from 'react-bootstrap'
-import TodoList from "../todo-list/todo-list.component";
-import RecipeItemComponent from "../recipes/recipe-item/recipe.component";
-import RecipeListComponent from "../recipes/recipe-list/recipe-list.component";
 import { observer, inject } from "mobx-react";
-import { ViewState } from "../context/view-state";
 import * as classNames from "classnames";
+import { RootStore } from "../../store/root-store";
+import TodoListComponent from "../todo-list/todo-list.component";
+import RecipeListComponent from "../recipes/recipe-list/recipe-list.component";
+import RecipeItemComponent from "../recipes/recipe-item/recipe.component";
 
 export enum HeaderTabs{
     todoList,
@@ -15,34 +15,33 @@ export enum HeaderTabs{
 }
 
 interface Props{
-    viewState: ViewState;
+    rootStore:RootStore;
 }
 
-@inject('viewState')
+@inject('rootStore')
 @observer
- class TabMenuComponent extends React.Component{
-     private viewState: ViewState;
+ class TabMenuComponent extends React.Component<Props>{
+     private rootContext: RootStore;
 
    constructor(props:Props){
       super(props);
-      this.viewState = props.viewState;
+      this.rootContext = this.props.rootStore;
    }
 
     private changeActiveTab(tab: HeaderTabs){
-        this.viewState.changeActiveTab(tab);
+        this.rootContext.viewState.changeActiveTab(tab);
     }
 
     private getTabContent(){
-        console.log(this.viewState.activeTab);
-       switch (this.viewState.activeTab){
-            case HeaderTabs.todoList: return <TodoList/>
-            case HeaderTabs.createRecipe: return <RecipeItemComponent/>
-            case HeaderTabs.recipeList: return <RecipeListComponent/>
+       switch (this.rootContext.viewState.activeTab){
+            case HeaderTabs.todoList: return <TodoListComponent todoList={this.rootContext.todoList}/>
+            case HeaderTabs.createRecipe: return <RecipeItemComponent recipeList={this.rootContext.recipeList} />
+            case HeaderTabs.recipeList: return <RecipeListComponent  recipeList={this.rootContext.recipeList}/>
        }
     }
 
     isActive(tab:HeaderTabs){
-        return this.viewState.activeTab === tab;
+        return this.rootContext.viewState.activeTab === tab;
     }
 
    public render(){
@@ -61,21 +60,9 @@ interface Props{
                         </li>
                     </ul>
                 </div>
-              { this.getTabContent()}
-                         
+              { this.getTabContent()}                         
                 
-            </div>
-            // <Tabs defaultActiveKey={2} id="uncontrolled-tab-example">
-            //     <Tab eventKey={1} title="Todo List">
-            //         <TodoList/>
-            //     </Tab>
-            //     <Tab eventKey={2} title="Create Recipe">
-            //         <RecipeItemComponent/>
-            //     </Tab>
-            //     <Tab eventKey={3} title="Recipe List">
-            //         <RecipeListComponent/>
-            //     </Tab>
-            // </Tabs>     
+            </div>            
         );
 
     }

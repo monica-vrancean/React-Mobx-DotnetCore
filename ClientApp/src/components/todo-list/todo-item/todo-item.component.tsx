@@ -1,9 +1,9 @@
-import { TodoItem } from "../../context/todo-item";
 import { observer } from "mobx-react";
 import * as React from "react";
 import { action } from "mobx";
 import * as classNames from "classnames";
-import { TodoItemStatus } from "../../models/todo-model";
+import { TodoItem } from "../../../view-models/todo-item";
+import { TodoItemStatus } from "../../../models/todo-item-status";
 
 interface Props{
   todoItem:TodoItem;

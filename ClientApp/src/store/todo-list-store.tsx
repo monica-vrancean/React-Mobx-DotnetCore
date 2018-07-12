@@ -1,10 +1,10 @@
 
 import { observable, computed, action } from 'mobx';
 import { FilterTypes } from '../models/Filter-types';
-import { TodoItem } from './todo-item';
+import { TodoItem } from '../view-models/todo-item';
 import { TodoItemStatus } from '../models/todo-item-status';
 
-export class TodoList{
+export class TodoListStore{
     @observable todos:TodoItem[] = [];
     @observable filter: FilterTypes = FilterTypes.All;
     @computed get getTodos(){
@@ -59,4 +59,4 @@ export class TodoList{
     }
 }
 
-export default new TodoList();
+export default new TodoListStore();

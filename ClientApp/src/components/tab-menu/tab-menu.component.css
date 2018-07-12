@@ -18,6 +18,7 @@ ul.tabs {
       font-stretch: expanded;
       text-align: center;
       flex-grow: 1;
+      cursor: pointer;
  } 
  ul.tabs li a {
         white-space: nowrap;
